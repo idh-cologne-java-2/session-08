@@ -1,43 +1,10 @@
 package idh.java;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Tree<T> {
 
-	T value;
-	Set<Tree<T>> children;
 	
-	public Tree(T value) {
-		this.value = value;
-		this.children = new HashSet<Tree<T>>();
-	}
-	
-	public Tree(T value, Collection<Tree<T>> children) {
-		this.value = value;
-		this.children = new HashSet<Tree<T>>(children);
-	}
-	
-	public T get() {
-		return value;
-	}
-
-	public void set(T value) {
-		this.value = value;
-	}
-
-	public Set<Tree<T>> children() {
-		return children;
-	}
-	
-	public void dfs() {
-		System.out.println(this.value);
-		for (Tree<T> child : children) {
-			child.dfs();
-		}
-	}
-	
+	/*
 	public static void main(String[] args) {
 		
 		Tree<String> ebike = new Tree<String>("e-bike");
@@ -53,5 +20,6 @@ public class Tree<T> {
 		
 		wheeled_vehicle.dfs();
 	}
+	*/
 
 }

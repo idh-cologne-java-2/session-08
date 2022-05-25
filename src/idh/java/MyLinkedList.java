@@ -156,7 +156,11 @@ public class MyLinkedList<T> implements List<T> {
 
 	@Override
 	public T get(int index) {
-		return prefirst.get(index+1);
+		try {
+			return getElement(index).value;
+		} catch (NullPointerException e) {
+			throw new IndexOutOfBoundsException();
+		}
 	}
 
 	@Override
@@ -314,16 +318,6 @@ public class MyLinkedList<T> implements List<T> {
 				return 1;
 			return next.size() + 1;
 		}
-		
-		public T get(int i) {
-			if (i == 0) 
-				return value;
-			else 
-				if (next == null)
-					throw new IndexOutOfBoundsException();
-				else
-					return next.get(i-1);
-		}
 	}
 	
 	/**
@@ -385,7 +379,7 @@ public class MyLinkedList<T> implements List<T> {
 		testReturn("toString()", "[Hallo]", list.toString());
 		testReturn("add()", true, list.add("Welt"));
 		testReturn("toString()", "[Hallo,Welt]", list.toString());
-		testReturn("get(1)", "Welt", list.get(1));
+		testReturn("get(1)", "Welt", list.get(0));
 		list.add(0, "Achtung");
 		testReturn("toString()", "[Achtung,Hallo,Welt]", list.toString());
 		testReturn("set()", "Hallo", list.set(1, "Hello"));
