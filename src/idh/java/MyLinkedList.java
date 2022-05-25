@@ -156,11 +156,7 @@ public class MyLinkedList<T> implements List<T> {
 
 	@Override
 	public T get(int index) {
-		try {
-			return getElement(index).value;
-		} catch (NullPointerException e) {
-			throw new IndexOutOfBoundsException();
-		}
+		return prefirst.get(index + 1);
 	}
 
 	@Override
@@ -317,6 +313,16 @@ public class MyLinkedList<T> implements List<T> {
 			if (next == null)
 				return 1;
 			return next.size() + 1;
+		}
+		
+		public T get(int index) {
+			if (index == 0)
+				return value;
+			
+			if (next == null)
+				throw new IndexOutOfBoundsException();
+			
+			return next.get(index - 1);
 		}
 	}
 	
